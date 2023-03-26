@@ -1,12 +1,14 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
-
+import { Captcha, Form, FormCompletion } from "./components";
+import { useCaptcha } from "./context/captcha-context";
 function App() {
-  const [count, setCount] = useState(0);
-
-  return <div className="App"></div>;
+  const {
+    captcha: { submitted },
+  } = useCaptcha();
+  return (
+    <main className="h-screen flex justify-center items-center">
+      {!submitted ? <Form /> : <FormCompletion />}
+    </main>
+  );
 }
-
 export default App;
